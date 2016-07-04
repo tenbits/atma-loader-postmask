@@ -1,0 +1,30 @@
+var FILE = './foo.mask',
+	FILE_ERRORED_BUILDER = './foo-errored-builder.mask',
+	FILE_ERRORED_PARSER = './foo-errored-parser.mask'
+	;
+	
+UTest({
+	
+	'include': function(done){
+
+		include
+			.load(FILE)
+			.done(function(resp){
+
+				has_(resp.load.foo, 'webkit');
+				done();
+			});
+	},
+	
+	'!io.File.readAsync': function(){		
+		return io.File.readAsync(FILE).done(function(content){
+			logger.log(content);
+			//has_(content, '-webkit-');
+		})
+	},
+	
+	'parser error': function(){
+		var content = io.File.read(FILE_ERRORED_PARSER);
+		has_(content, 'CssSyntaxError');
+	}
+});
