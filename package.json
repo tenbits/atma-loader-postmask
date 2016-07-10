@@ -6,7 +6,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "maskjs": ">=0.54.33"
+    "maskjs": ">=0.54.33",
+    "postmask": "^1.0.6"
   },
   "devDependencies": {
     "atma": "latest",
