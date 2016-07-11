@@ -1,4 +1,5 @@
 before_install:
+  - npm install
   - cd test
 before_script:
   - export DISPLAY=:99.0

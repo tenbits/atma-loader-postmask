@@ -2,12 +2,13 @@ var FILE = './foo.mask',
 	FILE_ERRORED_BUILDER = './foo-errored-builder.mask',
 	FILE_ERRORED_PARSER = './foo-errored-parser.mask'
 	;
-	
+
 UTest({	
-	'!io.File.readAsync' () {		
-		return io.File.readAsync(FILE).done(function(content){
-			logger.log(content);
-			//has_(content, '-webkit-');
-		})
+	'!io.File.readAsync' () {	
+		return io.File.readAsync(FILE).done(content => {
+
+			has_(content, 'h5');
+			hasNot_(content, 'h4');
+		});
 	}
 });

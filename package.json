@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "maskjs": ">=0.54.33",
-    "postmask": "^1.0.6"
+    "postmask": "^1.0.8"
   },
   "devDependencies": {
     "atma": "latest",
