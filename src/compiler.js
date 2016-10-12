@@ -4,7 +4,10 @@
 			
 	module.exports = {
 		compile: function(source, path, options){
-			throw new Error('Mask Sync compile not implemented yet');
+			console.warn('[atma-loader-postmask] Sync compile not implemented yet in `postmask`.', path);
+			return {
+				content: source
+			};
 		},
 		compileAsync: function(source, path, options, fn){
 
