@@ -7,7 +7,7 @@
   },
   "atma": {
     "plugins": [
-      ".."
+      "../index.js"
     ],
     "settings": {
       "atma-loader-postmask": {
