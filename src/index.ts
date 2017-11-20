@@ -1,5 +1,6 @@
 import * as Base from 'atma-io-middleware-base'
-import processAsync from './compiler';
+import * as postmask from 'postmask'
+import processAsync from './compiler'
 
 
 export = Base.create({
@@ -12,7 +13,10 @@ export = Base.create({
             
         },        
     },
-	processAsync
+    processAsync,
+    onMount (ioLib) {
+        postmask.configurate({
+            io: ioLib
+        });
+    }
 });
-		
-	

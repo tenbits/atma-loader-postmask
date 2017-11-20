@@ -14,15 +14,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var postmask = require("postmask");
 function processAsync(content, file, compiler) {
     return postmask
-        .processSource(content, file.uri.toString(), compiler.options)
+        .optimizeAsync(content, file.uri.toString(), compiler.options)
         .then(function (str) {
         return {
             content: str
-        };
-    }, function (error) {
-        return {
-            content: error.toString(),
-            error: error
         };
     });
 }
@@ -42,6 +37,7 @@ exports.default = processAsync;
 				
 "use strict";
 var Base = require("atma-io-middleware-base");
+var postmask = require("postmask");
 var compiler_1 = _src_compiler;
 module.exports = Base.create({
     name: 'atma-loader-postmask',
@@ -51,7 +47,12 @@ module.exports = Base.create({
         extensions: ['mask'],
         mask: {},
     },
-    processAsync: compiler_1.default
+    processAsync: compiler_1.default,
+    onMount: function (ioLib) {
+        postmask.configurate({
+            io: ioLib
+        });
+    }
 });
 
 				
