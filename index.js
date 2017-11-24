@@ -13,12 +13,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var postmask = require("postmask");
 function processAsync(content, file, compiler) {
-    return postmask
-        .optimizeAsync(content, file.uri.toString(), compiler.options)
-        .then(function (str) {
-        return {
-            content: str
-        };
+    return new Promise(function (resolve, reject) {
+        postmask
+            .optimizeAsync(content, file.uri.toString(), compiler.options)
+            .then(function (body) {
+            var report = body.report;
+            if (report.warnings.length > 0) {
+                var logger_1 = compiler.options.logger;
+                logger_1.write("Mask warnings for " + file.uri.toLocalFile());
+                report.warnings.forEach(function (x) {
+                    logger_1.write(x.message);
+                });
+            }
+            if (report.errors.length > 0) {
+                var logger_2 = compiler.options.logger;
+                logger_2.write("Mask errors for " + file.uri.toLocalFile());
+                report.errors.forEach(function (x) {
+                    logger_2.write(x.message);
+                });
+                reject(report.errors[0]);
+                return;
+            }
+            resolve(body.result);
+        });
     });
 }
 exports.default = processAsync;
