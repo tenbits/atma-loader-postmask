@@ -10,14 +10,14 @@ export default function processAsync (content, file, compiler: Compiler) {
 				
 				let report = body.report;
 				if (report.warnings.length > 0) {
-					let { logger } = compiler.options;
+					let { logger } = compiler;					
 					logger.write(`Mask warnings for ${file.uri.toLocalFile()}`)
 					report.warnings.forEach(x => {
 						logger.write(x.message);
 					});
 				}
 				if (report.errors.length > 0) {
-					let { logger } = compiler.options;
+					let { logger } = compiler;
 					logger.write(`Mask errors for ${file.uri.toLocalFile()}`)
 					report.errors.forEach(x => {
 						logger.write(x.message);

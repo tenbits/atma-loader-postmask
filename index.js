@@ -19,14 +19,14 @@ function processAsync(content, file, compiler) {
             .then(function (body) {
             var report = body.report;
             if (report.warnings.length > 0) {
-                var logger_1 = compiler.options.logger;
+                var logger_1 = compiler.logger;
                 logger_1.write("Mask warnings for " + file.uri.toLocalFile());
                 report.warnings.forEach(function (x) {
                     logger_1.write(x.message);
                 });
             }
             if (report.errors.length > 0) {
-                var logger_2 = compiler.options.logger;
+                var logger_2 = compiler.logger;
                 logger_2.write("Mask errors for " + file.uri.toLocalFile());
                 report.errors.forEach(function (x) {
                     logger_2.write(x.message);
