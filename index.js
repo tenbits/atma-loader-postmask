@@ -59,9 +59,12 @@ var compiler_1 = _src_compiler;
 module.exports = Base.create({
     name: 'atma-loader-postmask',
     textOnly: true,
+    cacheable: true,
     defaultOptions: {
         mimeType: 'text/mask',
         extensions: ['mask'],
+        plugins: [],
+        configs: {},
         mask: {},
     },
     processAsync: compiler_1.default,

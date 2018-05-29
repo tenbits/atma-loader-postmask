@@ -2,7 +2,7 @@ import * as postmask from 'postmask'
 import { Compiler, io } from 'atma-io-middleware-base'
 
 
-export default function processAsync (content, file, compiler: Compiler) {
+export default function processAsync (content, file, compiler: Compiler): PromiseLike<any> {
 	return new Promise((resolve, reject) => {
 		postmask
 			.optimizeAsync(content, file.uri.toString(), compiler.options)
