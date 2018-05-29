@@ -1,6 +1,6 @@
 {
     "name": "atma-loader-postmask",
-    "version": "1.0.15",
+    "version": "1.0.16",
     "description": "Mask optimizers for `atma-io`, `IncludeJS` and `atma-server`.",
     "author": "Alexander Kit (alex.kit@atmajs.com)",
     "main": "index.js",
@@ -10,14 +10,14 @@
         "server": "atma server"
     },
     "dependencies": {
-        "atma-io-middleware-base": "^1.0.25",
+        "atma-io-middleware-base": "^1.0.27",
         "maskjs": ">=0.54.33",
         "postmask": "^1.1.5"
     },
     "devDependencies": {
         "app-bundler": "0.0.35",
         "atma": "latest",
-        "atma-loader-ts": "^1.0.0"
+        "atma-loader-ts": "^1.1.6"
     },
     "app-bundler": {
         "file": "src/index.ts",
